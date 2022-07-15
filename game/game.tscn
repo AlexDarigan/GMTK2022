@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8cp28ei7si6n"]
+
+[ext_resource type="PackedScene" uid="uid://c0i7cxatdhh75" path="res://platform/platform.tscn" id="1_paqie"]
+[ext_resource type="PackedScene" uid="uid://cjtm111wewqus" path="res://player/player.tscn" id="2_dktjk"]
+[ext_resource type="Texture2D" uid="uid://dv7p4dfll0klw" path="res://game/sprites/background.png" id="3_w8ahy"]
+
+[node name="game" type="Node2D"]
+
+[node name="Platform" parent="." instance=ExtResource("1_paqie")]
+position = Vector2(242, 568)
+
+[node name="Platform2" parent="." instance=ExtResource("1_paqie")]
+position = Vector2(507, 456)
+
+[node name="Platform3" parent="." instance=ExtResource("1_paqie")]
+position = Vector2(1602, 574)
+
+[node name="Platform4" parent="." instance=ExtResource("1_paqie")]
+position = Vector2(1345, 574)
+
+[node name="Platform5" parent="." instance=ExtResource("1_paqie")]
+position = Vector2(1053, 568)
+
+[node name="Platform6" parent="." instance=ExtResource("1_paqie")]
+position = Vector2(786, 571)
+
+[node name="Player" parent="." instance=ExtResource("2_dktjk")]
+position = Vector2(229, 471)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground"]
+texture = ExtResource("3_w8ahy")
+centered = false
