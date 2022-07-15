@@ -1,8 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8cp28ei7si6n"]
+[gd_scene load_steps=11 format=3 uid="uid://b8tgff67thour"]
 
 [ext_resource type="PackedScene" uid="uid://c0i7cxatdhh75" path="res://platform/platform.tscn" id="1_paqie"]
+[ext_resource type="PackedScene" uid="uid://dyolpqa0u5u35" path="res://enemy/enemy.tscn" id="2_8ucfk"]
 [ext_resource type="PackedScene" uid="uid://cjtm111wewqus" path="res://player/player.tscn" id="2_dktjk"]
 [ext_resource type="Texture2D" uid="uid://dv7p4dfll0klw" path="res://game/sprites/background.png" id="3_w8ahy"]
+[ext_resource type="Texture2D" uid="uid://cuvpwso3n4tuw" path="res://player/sprites/6.png" id="4_u8ayv"]
+[ext_resource type="AudioStream" uid="uid://b57j1hte2le1y" path="res://game/bgm/Infinite Descent.ogg" id="5_oxm2e"]
+[ext_resource type="PackedScene" uid="uid://b2hu0u7nr2y4a" path="res://terrain/node_2d.tscn" id="7_e0lx2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ryipo"]
+content_margin_left = 64.0
+content_margin_top = 32.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+draw_center = false
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_772iq"]
+scenes/1/scene = ExtResource("7_e0lx2")
+
+[sub_resource type="TileSet" id="TileSet_2g77n"]
+sources/0 = SubResource("TileSetScenesCollectionSource_772iq")
 
 [node name="game" type="Node2D"]
 
@@ -11,6 +28,9 @@ position = Vector2(242, 568)
 
 [node name="Platform2" parent="." instance=ExtResource("1_paqie")]
 position = Vector2(513, 552)
+
+[node name="Enemy" parent="Platform2" instance=ExtResource("2_8ucfk")]
+position = Vector2(9, -85)
 
 [node name="Platform3" parent="." instance=ExtResource("1_paqie")]
 position = Vector2(1602, 574)
@@ -29,13 +49,40 @@ position = Vector2(229, 471)
 
 [node name="ParallaxBackground" type="CanvasLayer" parent="."]
 layer = -1
-follow_viewport_scale = 2.0
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground"]
 texture_repeat = 2
 texture = ExtResource("3_w8ahy")
 centered = false
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_repeat = 2
-motion_scale = Vector2(2, 2)
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="Score" type="Label" parent="UI"]
+offset_right = 137.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_ryipo")
+text = "Score: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lives" type="TextureRect" parent="UI"]
+offset_left = 64.0
+offset_top = 96.0
+offset_right = 96.0
+offset_bottom = 128.0
+texture = ExtResource("4_u8ayv")
+ignore_texture_size = true
+metadata/_edit_use_custom_anchors = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oxm2e")
+autoplay = true
+
+[node name="Terrain" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_2g77n")
+cell_quadrant_size = 64
+format = 2
+layer_0/tile_data = PackedInt32Array(2555904, 0, 65536, 2555907, 0, 65536, 2555908, 0, 65536, 2555909, 0, 65536, 2555910, 0, 65536, 2555911, 0, 65536, 2555912, 0, 65536, 2555913, 0, 65536, 2555914, 0, 65536, 2555915, 0, 65536, 2555916, 0, 65536, 2555917, 0, 65536, 2555918, 0, 65536, 2555919, 0, 65536, 2555920, 0, 65536, 2555921, 0, 65536, 2555922, 0, 65536, 2555923, 0, 65536, 2555924, 0, 65536, 2555925, 0, 65536, 2555926, 0, 65536, 2555927, 0, 65536, 2555929, 0, 65536)

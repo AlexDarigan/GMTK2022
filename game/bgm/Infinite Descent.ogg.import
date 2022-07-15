@@ -1,0 +1,16 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOGGVorbis"
+uid="uid://b57j1hte2le1y"
+path="res://.godot/imported/Infinite Descent.ogg-33c6dc44d321b9f6db8fc702358ff45f.oggvorbisstr"
+
+[deps]
+
+source_file="res://game/bgm/Infinite Descent.ogg"
+dest_files=["res://.godot/imported/Infinite Descent.ogg-33c6dc44d321b9f6db8fc702358ff45f.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0

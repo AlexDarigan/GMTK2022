@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dn1l8ufe3dwgg"]
+
+[ext_resource type="PackedScene" uid="uid://b2hu0u7nr2y4a" path="res://terrain/node_2d.tscn" id="1_x13ba"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_772iq"]
+scenes/1/scene = ExtResource("1_x13ba")
+
+[sub_resource type="TileSet" id="TileSet_2g77n"]
+sources/0 = SubResource("TileSetScenesCollectionSource_772iq")
+
+[node name="Terrain" type="TileMap"]
+tile_set = SubResource("TileSet_2g77n")
+cell_quadrant_size = 64
+format = 2

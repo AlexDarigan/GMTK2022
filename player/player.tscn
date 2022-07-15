@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cjtm111wewqus"]
+[gd_scene load_steps=16 format=3 uid="uid://cjtm111wewqus"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_851b0"]
 [ext_resource type="Texture2D" uid="uid://64cbqfjvck6w" path="res://player/sprites/1.png" id="2_w0a7x"]
@@ -7,12 +7,23 @@
 [ext_resource type="Texture2D" uid="uid://dtilpejnx11b8" path="res://player/sprites/4.png" id="5_m34ue"]
 [ext_resource type="Texture2D" uid="uid://ceo56a7cptwx7" path="res://player/sprites/5.png" id="6_1n251"]
 [ext_resource type="Texture2D" uid="uid://cuvpwso3n4tuw" path="res://player/sprites/6.png" id="7_l7m3a"]
+[ext_resource type="Texture2D" uid="uid://dstv0p6s1nrh5" path="res://enemy/sprites/1.png" id="8_2tbsm"]
+[ext_resource type="Texture2D" uid="uid://bxxuhmuwmt574" path="res://enemy/sprites/2.png" id="9_5hrca"]
+[ext_resource type="Texture2D" uid="uid://cit3nliktqdyo" path="res://enemy/sprites/3.png" id="10_ivcv8"]
+[ext_resource type="Texture2D" uid="uid://2veh43qk4jh7" path="res://enemy/sprites/4.png" id="11_shgw3"]
+[ext_resource type="Texture2D" uid="uid://b4pugk74wnthq" path="res://enemy/sprites/5.png" id="12_tc5ve"]
+[ext_resource type="Texture2D" uid="uid://d4bnsarfsjwbr" path="res://enemy/sprites/6.png" id="13_62exv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m3e63"]
 animations = [{
+"frames": [ExtResource("8_2tbsm"), ExtResource("9_5hrca"), ExtResource("10_ivcv8"), ExtResource("11_shgw3"), ExtResource("12_tc5ve"), ExtResource("13_62exv")],
+"loop": true,
+"name": &"EnemyDice",
+"speed": 5.0
+}, {
 "frames": [ExtResource("2_w0a7x"), ExtResource("3_mo2by"), ExtResource("4_ym4nd"), ExtResource("5_m34ue"), ExtResource("6_1n251"), ExtResource("7_l7m3a")],
 "loop": true,
-"name": &"default",
+"name": &"PlayerDice",
 "speed": 5.0
 }]
 
@@ -26,6 +37,7 @@ faces = [ExtResource("2_w0a7x"), ExtResource("3_mo2by"), ExtResource("4_ym4nd"),
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 frames = SubResource("SpriteFrames_m3e63")
+animation = &"PlayerDice"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7c6ee")
