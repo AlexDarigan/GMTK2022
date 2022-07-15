@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 		randomize()
 		sprite.play()
-		rotation += rotation_speed * delta * direction
+		sprite.rotation += rotation_speed * delta * direction
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump
@@ -25,9 +25,9 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * speed
 		randomize()
 		sprite.play()
-		rotation += rotation_speed * delta * direction
+		sprite.rotation += rotation_speed * delta * direction
 	else:
-		rotation = 0
+		sprite.rotation = 0
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()

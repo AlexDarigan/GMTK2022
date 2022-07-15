@@ -31,4 +31,5 @@ frames = SubResource("SpriteFrames_m3e63")
 shape = SubResource("RectangleShape2D_7c6ee")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -128)
 current = true
