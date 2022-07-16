@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdfiij0l8g5bs"]
+
+[sub_resource type="TileSet" id="TileSet_2ywlm"]
+
+[node name="TileMaps" type="Node2D"]
+
+[node name="Platforms" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_2ywlm")
+format = 2
+
+[node name="Enemies" type="TileMap" parent="."]
+format = 2
+
+[node name="World" type="TileMap" parent="."]
+format = 2

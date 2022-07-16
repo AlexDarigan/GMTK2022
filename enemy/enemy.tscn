@@ -1,47 +1,31 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyolpqa0u5u35"]
+[gd_scene load_steps=9 format=3 uid="uid://dyolpqa0u5u35"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_es5xq"]
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_l6d8o"]
 [ext_resource type="Texture2D" uid="uid://dstv0p6s1nrh5" path="res://enemy/sprites/1.png" id="2_q4asa"]
-[ext_resource type="Texture2D" uid="uid://64cbqfjvck6w" path="res://player/sprites/1.png" id="2_sgnoi"]
 [ext_resource type="Texture2D" uid="uid://bxxuhmuwmt574" path="res://enemy/sprites/2.png" id="3_l5eu1"]
-[ext_resource type="Texture2D" uid="uid://cu7ou0ghg25h4" path="res://player/sprites/2.png" id="3_w5u3r"]
 [ext_resource type="Texture2D" uid="uid://cit3nliktqdyo" path="res://enemy/sprites/3.png" id="4_5y66j"]
-[ext_resource type="Texture2D" uid="uid://ddk0ntiqawiq8" path="res://player/sprites/3.png" id="4_jhoio"]
 [ext_resource type="Texture2D" uid="uid://2veh43qk4jh7" path="res://enemy/sprites/4.png" id="5_f8dyp"]
-[ext_resource type="Texture2D" uid="uid://dtilpejnx11b8" path="res://player/sprites/4.png" id="5_stp8k"]
 [ext_resource type="Texture2D" uid="uid://b4pugk74wnthq" path="res://enemy/sprites/5.png" id="6_0lqvg"]
-[ext_resource type="Texture2D" uid="uid://ceo56a7cptwx7" path="res://player/sprites/5.png" id="6_t4w6l"]
-[ext_resource type="Texture2D" uid="uid://cuvpwso3n4tuw" path="res://player/sprites/6.png" id="7_jj63g"]
 [ext_resource type="Texture2D" uid="uid://d4bnsarfsjwbr" path="res://enemy/sprites/6.png" id="7_y7m1h"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_m3e63"]
-animations = [{
-"frames": [ExtResource("2_q4asa"), ExtResource("3_l5eu1"), ExtResource("4_5y66j"), ExtResource("5_f8dyp"), ExtResource("6_0lqvg"), ExtResource("7_y7m1h")],
-"loop": true,
-"name": &"EnemyDice",
-"speed": 5.0
-}, {
-"frames": [ExtResource("2_sgnoi"), ExtResource("3_w5u3r"), ExtResource("4_jhoio"), ExtResource("5_stp8k"), ExtResource("6_t4w6l"), ExtResource("7_jj63g")],
-"loop": true,
-"name": &"PlayerDice",
-"speed": 5.0
-}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c6ee"]
 size = Vector2(54, 64)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("sprite")]
-script = ExtResource("1_es5xq")
-sprite = NodePath("AnimatedSprite2D")
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("timer", "sprite")]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_l6d8o")
+timer = NodePath("FaceChangeTimer")
+sprite = NodePath("Sprite")
 faces = [ExtResource("2_q4asa"), ExtResource("3_l5eu1"), ExtResource("4_5y66j"), ExtResource("5_f8dyp"), ExtResource("6_0lqvg"), ExtResource("7_y7m1h")]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("SpriteFrames_m3e63")
-animation = &"EnemyDice"
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_q4asa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7c6ee")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -128)
-current = true
+[node name="FaceChangeTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="FaceChangeTimer" to="." method="_on_face_change_timer_timeout"]

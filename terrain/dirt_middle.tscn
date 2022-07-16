@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://pqis3ws257cv"]
+
+[ext_resource type="Texture2D" uid="uid://w30ycodbg41n" path="res://terrain/sprites/dirtMid.png" id="1_tckku"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aah6s"]
+size = Vector2(64, 64)
+
+[node name="DirtMiddle" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tckku")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_aah6s")

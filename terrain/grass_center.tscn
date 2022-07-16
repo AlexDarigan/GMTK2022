@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://f4gymek6lhbu"]
+
+[ext_resource type="Texture2D" uid="uid://cg2hfrrvp18mf" path="res://terrain/sprites/grassCenter.png" id="1_ugcex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aah6s"]
+size = Vector2(64, 64)
+
+[node name="GrassCenter" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+texture = ExtResource("1_ugcex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -20)
+shape = SubResource("RectangleShape2D_aah6s")
