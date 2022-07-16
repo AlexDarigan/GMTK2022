@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export var rotation_speed: float = 6
 @export var faces: Array[Texture] = []
 @export var limit: int = 0
-var _current_face: int
+var face: int
 # Get the gravity from the project settings to be synced with RigidDynamicBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: int = 0
@@ -31,16 +31,23 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _change_face() -> void:
-	_current_face = randi() % (faces.size() - limit)
-	sprite.texture = faces[_current_face]
+	face = randi() % (faces.size() - limit)
+	sprite.texture = faces[face]
 
 func _on_face_change_timer_timeout():
 	_change_face()
-
 
 func _on_battle_zone_body_entered(body):
 	if body is Enemy:
 		body.direction = 0
 		body.timer.stop()
 		face_change_timer.stop()
-		print("do fight")
+		if body.face > face:
+			die()
+		else:
+			body.die()
+	await get_tree().process_frame
+	face_change_timer.start()
+
+func die() -> void:
+	print("player died")
